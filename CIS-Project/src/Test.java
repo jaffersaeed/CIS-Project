@@ -1,3 +1,4 @@
 public class Test {
-	int x = 4;
+	int x = 5;
+	int y = 5;
 }
