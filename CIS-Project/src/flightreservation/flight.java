@@ -1,4 +1,4 @@
-package project.util;
+package flightreservation;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;

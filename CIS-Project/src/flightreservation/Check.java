@@ -1,4 +1,4 @@
-package project.util;
+package flightreservation;
 
 import java.sql.SQLException;
 
@@ -15,7 +15,7 @@ public class Check {
 		// Get user information from the database
 		String[] result;// A string array to store user information when retrieved from database
 		try {
-			result = Messenger.getUser(username, password);
+			result = AzureSql.getUser(username, password);
 		}
 		catch (SQLException sql) {
 			System.out.println(sql.getMessage());
@@ -35,7 +35,7 @@ public class Check {
 		// Check if username exists in the database
 		String result;
 		try {
-			result = Messenger.getUsername(username);
+			result = AzureSql.getUsername(username);
 		} catch (SQLException sql) {
 			System.out.println(sql.getMessage());
 			return false;
@@ -53,7 +53,7 @@ public class Check {
 		int result = 0;
 		
 		try {
-			result = Messenger.getReservationCount();
+			result = AzureSql.getReservationCount();
 		}
 		catch (SQLException s) {
 			
@@ -69,7 +69,7 @@ public class Check {
 	public static void setbookingCount(int resCount) {
 
 		try {
-			Messenger.setReservationCount(resCount);
+			AzureSql.setReservationCount(resCount);
 		} catch (SQLException s) {
 
 		} catch (Exception e) {
@@ -83,7 +83,7 @@ public class Check {
 	public static boolean bookingExists(String departureDate, String username) {
 		String[] result = null; // A string array to store user information when retrieved from database
 		try {
-			result = Messenger.getReservation(departureDate, username);
+			result = AzureSql.getReservation(departureDate, username);
 		}
 		
 		catch (SQLException sql) {

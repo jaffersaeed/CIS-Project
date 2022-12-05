@@ -1,6 +1,8 @@
-package project.util;
+package flightreservation;
 
-public class Customer extends User {
+import flightreservation.User;
+
+public abstract class Customer extends User {
 
 	public Customer() {
 		

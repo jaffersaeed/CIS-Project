@@ -20,7 +20,7 @@ public abstract class User implements Menu {
 	private String securityQ;
 	private String securityA;
 	private String type;
-	public Reservation reservation;
+	public Booking booking;
 	
 	//no-argument constructor creates a default user
 	public User() {
@@ -183,6 +183,6 @@ public abstract class User implements Menu {
 	
 	
 	@Override
-	public void makeNewReservation(int flightNumber, String departureDate, int ticketNumber) {
-		reservation = new Reservation(this.userName,flightNumber,departureDate,ticketNumber);
+	public void makeNewBooking(int flightNumber, String departureDate, int ticketNumber) {
+		booking = new Booking(this.userName,flightNumber,departureDate,ticketNumber);
 	}

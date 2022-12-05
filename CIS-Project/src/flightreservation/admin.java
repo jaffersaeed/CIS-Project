@@ -1,6 +1,8 @@
-package project.util;
+package flightreservation;
 
-public class admin extends User {
+import flightreservation.User;
+
+public abstract class admin extends User {
 
 	public admin( String username, String password, String userType, String firstName, String lastName,
 			String address, String city, String state, String zipCode, String email, String ssn, 
