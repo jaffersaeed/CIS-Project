@@ -1,6 +1,6 @@
 package gui;
 
-//import javafx.application.Application;
+import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,52 +11,28 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+=======
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
 
-
-public class FlightMainMenu { //extends Application {
-
+public class FlightMainMenu extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = null;
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
-		Stage window;
-
-		public static void main(String[] args) {
-			launch(args);
-		}
-
-		@Override
-		public void start(Stage primaryStage) throws Exception {
-			window = primaryStage;
-			window.setTitle("Bus Transportation");
-			GridPane grid = new GridPane();
-			grid.setPadding(new Insets(10, 10, 10, 10));
-			grid.setVgap(8);
-			grid.setHgap(10);
-			grid.setAlignment(Pos.CENTER);
-			// Create a Main Menu Label
-			Label headerLabel = new Label("Main Menu");
-
-			headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-
-			grid.add(headerLabel, 0, 0, 2, 1);
-
-			GridPane.setHalignment(headerLabel, HPos.CENTER);
-
-			GridPane.setMargin(headerLabel, new Insets(20, 0, 20, 0));
-			// Create a login button
-			Button login = new Button("Login");
-			GridPane.setConstraints(login, 0, 1);
-			// Create a register button
-			Button register = new Button("Register");
-			GridPane.setConstraints(register, 1, 1);
-			// Create a Login object
-			Login loginS = new Login();
-			// Create a registration object
-			Registration registerS = new Registration();
-);
-			grid.getChildren().addAll(login, register);
-			Scene sceneRegister = new Scene(grid, 800, 400);
-			window.setScene(sceneRegister);
-			window.show();
-		}
-
+	public static void main(String[] args) {
+		launch(args);
 	}
 }
