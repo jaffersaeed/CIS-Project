@@ -14,7 +14,7 @@ public interface Menu {
 		// Get user information from the database
 		String[] result = null; // Create a string array to store data
 		try {
-			result = Messenger.getUser(username, password); // query the database
+			result = AzureSql.getUser(username, password); // query the database
 		}
 		catch (SQLException sql) {
 			System.out.println(sql.getMessage());
@@ -75,7 +75,7 @@ public interface Menu {
 		// check zip code validity
 		String city;
 		try {
-			city = Messenger.getCity(zipCode).toUpperCase();
+			city = AzureSql.getCity(zipCode).toUpperCase();
 			if (city.length() == 0) {
 				return "Invalid zip code";
 			}
@@ -113,7 +113,7 @@ public interface Menu {
 	
 		// Create a new User
 		try {
-			Messenger.createUser(username, password,userType,firstName,lastName,address,city,state,zip,
+			AzureSql.createUser(username, password,userType,firstName,lastName,address,city,state,zip,
 					email,ssn,securityQuestion,securityAnswer);
 		}
 		
@@ -132,7 +132,7 @@ public interface Menu {
 		// Check if username exists
 		if (Check.usernameExists(username)) {
 			try {
-				query = Messenger.getUser(username);
+				query = AzureSql.getUser(username);
 			}
 			catch (SQLException sql) {
 				result[0] = sql.getMessage();

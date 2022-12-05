@@ -2,49 +2,97 @@ package gui;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class MainController {
-
-    @FXML
-    private BorderPane root;
-
-    @FXML
-    private Parent login;
-
-    private Parent mainView;
-
-    @FXML
-    private LoginController loginController;
-
-    public void initialize() {
-        loginController.userProperty().addListener((obs, oldUser, newUser) -> {
-            if (newUser == null) {
-                root.setCenter(login);
-                root.getScene().getWindow().sizeToScene();
-            } else {
-                if (mainView == null) {
-                    loadMainView();
-                }
-                root.setCenter(mainView);
-                root.getScene().getWindow().sizeToScene();
-            }
-        });
-    }
-
-    private void loadMainView() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                    "DataView.fxml"));
-            mainView = loader.load();
-            DataView controller = loader.getController();
-            controller.userProperty().bindBidirectional(
-                    loginController.userProperty());
-        } catch (IOException exc) {
-            exc.printStackTrace();
-        }
-    }
+	
+	private Stage stage;
+	private Scene scene;
+	private Parent root;
+	
+	public void switchtoMain(ActionEvent event) {
+		public void switchtoLogin(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoLogin(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoRegister(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoAdminLogin(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("Adminlogin.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoMainMenu(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoForgotPassword(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoForgotPassword2(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("ForgotPassword2.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoBacktoWelcome(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void switchtoAdminMainMenu(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("AdminMainMenu.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchtoBacktoWelcome(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
+		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 }
