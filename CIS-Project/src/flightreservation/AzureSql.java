@@ -51,7 +51,7 @@ public class AzureSql {
 			}
 
 		}
-		private void ExecuteAzureSQL(String userNAme, String userPassword, String sql, String cnnStr) {
+		private void ExecuteAzureSQL(String userName, String userPassword, String sql, String cnnStr) {
 			System.out.println("executing SQL statement..");
 			try(Connection cnn = DriverManager.getConnection(cnnStr);
 					PreparedStatement statement = cnn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
