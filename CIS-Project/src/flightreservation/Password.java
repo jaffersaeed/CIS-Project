@@ -1,4 +1,4 @@
-package project.util;
+package flightreservation;
 
 
 public class Password {

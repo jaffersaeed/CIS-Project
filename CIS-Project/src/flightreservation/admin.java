@@ -1,4 +1,4 @@
-package project.util;
+package flightreservation;
 
 public class admin extends User {
 
@@ -6,7 +6,7 @@ public class admin extends User {
 			String address, String city, String state, String zipCode, String email, String ssn, 
 			String securityQuestion, String securityAnswer) {
 		
-		super(username, password, userType, firstName, lastName, address, city, state, zipCode, email, ssn,
+		super(username, password, userType, firstName, lastName, address, city, state, zipCode, email, ssn, 
 				securityQuestion, securityAnswer);
 	}
 	
