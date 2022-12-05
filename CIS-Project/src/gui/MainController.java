@@ -16,8 +16,7 @@ public class MainController {
 	private Scene scene;
 	private Parent root;
 	
-	public void switchtoMain(ActionEvent event) {
-		public void switchtoLogin(ActionEvent event) throws IOException {
+	public void switchtoMain(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("WelcomePage.fxml"));
 		stage = ((Stage)(Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
