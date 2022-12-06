@@ -16,7 +16,6 @@ import java.time.format.FormatStyle;
 
 public class SQL{
 	public static void main(String[] args) {
-		System.out.println("performing setup...");		
 		String userName = "CloudSAd2cc1c94@flightres";
 		String userPassword = "";
 		String cnnString=
@@ -37,7 +36,7 @@ public class SQL{
 		
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("database adress");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "insert into User values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = c.connection.prepareStatement(query);
@@ -67,7 +66,7 @@ public class SQL{
 
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("database adress");
+		c.connection = DriverManager.getConnection("cnnString");
 		String[] user = new String[14];
 
 		String query = "Select * from User where username=?";
@@ -129,7 +128,7 @@ public class SQL{
 
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("database adress");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String city = "";
 		String query = "select city from zip where zipCode = ?";
@@ -151,7 +150,7 @@ public class SQL{
 
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("database adress");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "insert into Flight values (?,?,?,?,?,?)";
 		PreparedStatement statement = c.connection.prepareStatement(query);
@@ -175,7 +174,7 @@ public class SQL{
 			
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("database adress");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "delete from Flight where flightNumber = ?";
 		PreparedStatement statement = c.connection.prepareStatement(query);
@@ -199,7 +198,7 @@ public class SQL{
 		
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("db address");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "insert into Booking values (?,?,?,?,?,?)";
 		PreparedStatement statement = c.connection.prepareStatement(query);
@@ -223,7 +222,7 @@ public class SQL{
 
 		String[] booking = new String[6];
 
-		c.connection = DriverManager.getConnection("db address");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "Select * from Booking where bookingNumber =?";
 
@@ -252,7 +251,7 @@ public class SQL{
 
 			SQL c = new SQL();
 
-			c.connection = DriverManager.getConnection("db address");
+			c.connection = DriverManager.getConnection("cnnString");
 
 			String query = "delete from Booking where bookingNumber = ?";
 			PreparedStatement statement = c.connection.prepareStatement(query);
@@ -275,7 +274,7 @@ public class SQL{
 
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("db address");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "Select * from BookingCount";
 
@@ -300,7 +299,7 @@ public class SQL{
 
 		SQL c = new SQL();
 
-		c.connection = DriverManager.getConnection("db address");
+		c.connection = DriverManager.getConnection("cnnString");
 
 		String query = "update BookingCount set resCount=?";
 
@@ -320,7 +319,7 @@ public class SQL{
 
 		try {
 
-			c.connection = DriverManager.getConnection("db address");
+			c.connection = DriverManager.getConnection("cnnString");
 
 			String query = "Select capacity,passengerCount from Flight where flightNumber=?";
 
@@ -354,7 +353,7 @@ public class SQL{
 
 			SQL c = new SQL();
 
-			c.connection = DriverManager.getConnection("db address");
+			c.connection = DriverManager.getConnection("cnnString");
 
 			String query = "update flight set passengerCount=? where flightNumber=?";
 
