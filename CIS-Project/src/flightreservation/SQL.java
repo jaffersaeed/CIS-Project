@@ -18,7 +18,7 @@ public class SQL{
 	public static String createUser(String userName, String password, String type, String firstName,
 			String lastName, String address, String city, String state, String zipCode, String phoneNumber,String email,
 			String ssn, String securityQ, String securityA) throws SQLException {
-
+		
 		SQL c = new SQL();
 
 		c.connection = DriverManager.getConnection("database adress");
@@ -47,6 +47,68 @@ public class SQL{
 		return "Account created successfully";
 
 	}
+	public static String[] getUser(String username) throws SQLException {
+
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("database adress");
+		String[] user = new String[14];
+
+		String query = "Select * from User where username=?";
+
+		PreparedStatement statement = c.connection.prepareStatement(query);
+
+		statement.setString(1, username);
+
+		ResultSet result = statement.executeQuery();
+
+		if (result.next()) {
+			user[0] = result.getString(1);
+			user[1] = result.getString(2);
+			user[2] = result.getString(3);
+			user[3] = result.getString(4);
+			user[4] = result.getString(5);
+			user[5] = result.getString(6);
+			user[6] = result.getString(7);
+			user[7] = result.getString(8);
+			user[8] = result.getString(9);
+			user[9] = result.getString(10);
+			user[10] = result.getString(11);
+			user[11] = result.getString(12);
+			user[12] = result.getString(13);
+			user[13] = result.getString(14);
+		}
+
+		c.connection.close();
+
+		return user;
+
+	}
+	public static String getUsername(String userName) throws SQLException {
+
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("database address");
+
+		String query = "Select username from User where username=?";
+
+		PreparedStatement statement = c.connection.prepareStatement(query);
+
+		statement.setString(1, username);
+
+		ResultSet result = statement.executeQuery();
+		
+		String data = "";
+
+		if (result.next()) {
+			data = result.getString(1);
+		}
+
+		c.connection.close();
+
+		return data;
+
+	}
 	public static String getCity(int zipCode) throws SQLException {
 
 		SQL c = new SQL();
@@ -67,6 +129,54 @@ public class SQL{
 
 		return city;
 	}
+
+	public static void createBus(int busNumber, String departureCity, String departureDate,
+			String destinationCity, int capacity, int passengerCount) throws SQLException {
+
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("database adress");
+
+		String query = "insert into Bus values (?,?,?,?,?,?)";
+		PreparedStatement statement = c.connection.prepareStatement(query);
+		statement.setInt(1, busNumber);
+		statement.setString(2, departureCity);
+		statement.setString(3, departureDate);
+		statement.setString(4, destinationCity);
+		statement.setInt(5, capacity);
+		statement.setInt(6, passengerCount);
+
+		statement.executeUpdate();
+
+		c.connection.close();
+
+	}
 	
-	
+	/** method deletes a Bus */
+	public static void deleteBus(int busNumber) {
+
+		try {
+			
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("database adress");
+
+		String query = "delete from Bus where busNumber = ?";
+		PreparedStatement statement = c.connection.prepareStatement(query);
+		statement.setInt(1, busNumber);
+
+		statement.executeUpdate();
+
+		c.connection.close();
+		
+		}
+		catch(SQLException sql) {
+			
+		}
+		catch(Exception e) {
+			
+		}
+
+	}
+
 }
