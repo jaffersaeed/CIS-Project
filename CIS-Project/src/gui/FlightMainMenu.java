@@ -11,8 +11,11 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+<<<<<<< HEAD
 import javafx.application.Application;
 import javafx.stage.Stage;
+=======
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,7 +33,10 @@ public class FlightMainMenu extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
 @Override
 	public void start(Stage primaryStage)  {
 		window = primaryStage;
@@ -58,3 +64,14 @@ public class FlightMainMenu extends Application {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
