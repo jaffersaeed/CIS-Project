@@ -130,16 +130,16 @@ public class SQL{
 		return city;
 	}
 
-	public static void createBus(int busNumber, String departureCity, String departureDate,
+	public static void createFlight(int flightNumber, String departureCity, String departureDate,
 			String destinationCity, int capacity, int passengerCount) throws SQLException {
 
 		SQL c = new SQL();
 
 		c.connection = DriverManager.getConnection("database adress");
 
-		String query = "insert into Bus values (?,?,?,?,?,?)";
+		String query = "insert into Flight values (?,?,?,?,?,?)";
 		PreparedStatement statement = c.connection.prepareStatement(query);
-		statement.setInt(1, busNumber);
+		statement.setInt(1, flightNumber);
 		statement.setString(2, departureCity);
 		statement.setString(3, departureDate);
 		statement.setString(4, destinationCity);
@@ -152,8 +152,8 @@ public class SQL{
 
 	}
 	
-	/** method deletes a Bus */
-	public static void deleteBus(int busNumber) {
+	/** method deletes a Flight */
+	public static void deleteFlight(int flightNumber) {
 
 		try {
 			
@@ -161,9 +161,9 @@ public class SQL{
 
 		c.connection = DriverManager.getConnection("database adress");
 
-		String query = "delete from Bus where busNumber = ?";
+		String query = "delete from Flight where flightNumber = ?";
 		PreparedStatement statement = c.connection.prepareStatement(query);
-		statement.setInt(1, busNumber);
+		statement.setInt(1, flightNumber);
 
 		statement.executeUpdate();
 
