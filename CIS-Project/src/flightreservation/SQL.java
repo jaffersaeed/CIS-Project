@@ -15,6 +15,22 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 public class SQL{
+	public static void main(String[] args) {
+		System.out.println("performing setup...");		
+		String userName = "CloudSAd2cc1c94@flightres";
+		String userPassword = "";
+		String cnnString=
+				"jdbc:sqlserver:"
+				+ "//flightres.database.windows.net:1433;"
+				+"database=Data;"
+				+"user=" + userName + ";"
+				+"password=" + userPassword + ";"
+				+"encrypt=true;"
+				+"trustServerCertificate=false;"
+				+"hostNameInCertificate=*.database.windows.net;"
+				+"loginTimeout=30;";
+		
+	}
 	public static String createUser(String userName, String password, String type, String firstName,
 			String lastName, String address, String city, String state, String zipCode, String phoneNumber,String email,
 			String ssn, String securityQ, String securityA) throws SQLException {
