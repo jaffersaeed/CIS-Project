@@ -178,5 +178,57 @@ public class SQL{
 		}
 
 	}
+	public static String createBooking(int bookingNumber, String dateCreated, String userName,
+			int flightNumber, String departureDate, int ticketNumber) throws SQLException {
+		
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("db address");
+
+		String query = "insert into Reservation values (?,?,?,?,?,?)";
+		PreparedStatement statement = c.connection.prepareStatement(query);
+		statement.setInt(1, bookingNumber);
+		statement.setString(2, dateCreated);
+		statement.setString(3, userName);
+		statement.setInt(4, flightNumber);
+		statement.setString(5, departureDate);
+		statement.setInt(6, ticketNumber);
+
+		statement.executeUpdate();
+
+		c.connection.close();
+
+		return "Success!";
+	}
+	
+	
+	public static String[] getBooking(int bookingNumber) throws SQLException {
+		SQL c = new SQL();
+
+		String[] reservation = new String[6];
+
+		c.connection = DriverManager.getConnection("db address");
+
+		String query = "Select * from Booking where bookingNumber =?";
+
+		PreparedStatement statement = c.connection.prepareStatement(query);
+
+		statement.setInt(1, bookingNumber);
+
+		ResultSet result = statement.executeQuery();
+
+		if (result.next()) {
+			reservation[0] = "" + result.getInt(1);
+			reservation[1] = result.getString(2);
+			reservation[2] = result.getString(3);
+			reservation[3] = "" + result.getInt(4);
+			reservation[4] = result.getString(5);
+			reservation[5] = "" + result.getInt(6);
+		}
+
+		c.connection.close();
+
+		return reservation;
+	}
 
 }
