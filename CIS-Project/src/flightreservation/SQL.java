@@ -1,4 +1,4 @@
-package flightreservation;
+package flightbooking;
 
 import javafx.collections.*;
 
@@ -185,7 +185,7 @@ public class SQL{
 
 		c.connection = DriverManager.getConnection("db address");
 
-		String query = "insert into Reservation values (?,?,?,?,?,?)";
+		String query = "insert into Booking values (?,?,?,?,?,?)";
 		PreparedStatement statement = c.connection.prepareStatement(query);
 		statement.setInt(1, bookingNumber);
 		statement.setString(2, dateCreated);
@@ -205,7 +205,7 @@ public class SQL{
 	public static String[] getBooking(int bookingNumber) throws SQLException {
 		SQL c = new SQL();
 
-		String[] reservation = new String[6];
+		String[] booking = new String[6];
 
 		c.connection = DriverManager.getConnection("db address");
 
@@ -218,17 +218,119 @@ public class SQL{
 		ResultSet result = statement.executeQuery();
 
 		if (result.next()) {
-			reservation[0] = "" + result.getInt(1);
-			reservation[1] = result.getString(2);
-			reservation[2] = result.getString(3);
-			reservation[3] = "" + result.getInt(4);
-			reservation[4] = result.getString(5);
-			reservation[5] = "" + result.getInt(6);
+			booking[0] = "" + result.getInt(1);
+			booking[1] = result.getString(2);
+			booking[2] = result.getString(3);
+			booking[3] = "" + result.getInt(4);
+			booking[4] = result.getString(5);
+			booking[5] = "" + result.getInt(6);
 		}
 
 		c.connection.close();
 
-		return reservation;
+		return booking;
+	}
+	public static void deleteBooking(int bookingNumber) {
+
+		try {
+
+			SQL c = new SQL();
+
+			c.connection = DriverManager.getConnection("db address");
+
+			String query = "delete from Booking where bookingNumber = ?";
+			PreparedStatement statement = c.connection.prepareStatement(query);
+			statement.setInt(1, bookingNumber);
+
+			statement.executeUpdate();
+
+			c.connection.close();
+
+		} catch (SQLException sql) {
+
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	
+	public static int getBookingCount() throws SQLException {
+
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("db address");
+
+		String query = "Select * from BookingCount";
+
+		PreparedStatement statement = c.connection.prepareStatement(query);
+
+		ResultSet result = statement.executeQuery();
+
+		int data = 0;
+
+		if (result.next()) {
+			data = result.getInt(1);
+		}
+
+		c.connection.close();
+
+		return data;
+
+	}
+	
+
+	public static void setBookingCount(int bookCount) throws SQLException {
+
+		SQL c = new SQL();
+
+		c.connection = DriverManager.getConnection("db address");
+
+		String query = "update BookingCount set resCount=?";
+
+		PreparedStatement statement = c.connection.prepareStatement(query);
+		
+		statement.setInt(1, bookCount);
+
+		statement.executeUpdate();
+		
+		c.connection.close();
+
+	}
+	
+	public static int[] getPassengerCount(int flightNumber) {
+
+		SQL c = new SQL();
+
+		try {
+
+			c.connection = DriverManager.getConnection("db address");
+
+			String query = "Select capacity,passengerCount from Flight where flightNumber=?";
+
+			PreparedStatement statement = c.connection.prepareStatement(query);
+			statement.setInt(1, flightNumber);
+
+			ResultSet result = statement.executeQuery();
+
+			int[] data = new int[2];
+
+			if (result.next()) {
+				data[0] = result.getInt(1);
+				data[1] = result.getInt(2);
+			}
+
+			c.connection.close();
+
+			return data;
+		} catch (SQLException sql) {
+
+		} catch (Exception e) {
+
+		}
+		
+		return null;
+
 	}
 
 }
