@@ -332,5 +332,32 @@ public class SQL{
 		return null;
 
 	}
+	public static void updatePassengerCount(int passengerCount, int flightNumber) {
+
+		try {
+
+			SQL c = new SQL();
+
+			c.connection = DriverManager.getConnection("db address");
+
+			String query = "update flight set passengerCount=? where flightNumber=?";
+
+			PreparedStatement statement = c.connection.prepareStatement(query);
+
+			statement.setInt(1, passengerCount);
+			statement.setInt(2, flightNumber);
+
+			statement.executeUpdate();
+
+			c.connection.close();
+
+		} catch (SQLException sql) {
+
+		} catch (Exception e) {
+
+		}
+
+	}
+
 
 }
