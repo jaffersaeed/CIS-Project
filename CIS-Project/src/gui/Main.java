@@ -2,6 +2,10 @@ package gui;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
 =======
 
 >>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
@@ -12,6 +16,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import javafx.scene.Group;
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
 =======
 import javafx.scene.Group;
 >>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
@@ -33,6 +41,7 @@ import javafx.geometry.Pos;
 public class Main extends Application {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	public void start(Stage primaryStage) {
 		
@@ -48,6 +57,10 @@ public class Main extends Application {
 		}
 	}
 	
+=======
+	Stage window;
+
+>>>>>>> branch 'master' of https://github.com/jaffersaeed/CIS-Project.git
 =======
 	Stage window;
 
